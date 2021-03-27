@@ -1,5 +1,5 @@
 # Graph-Processing-using-Map-Reduce
-Detecting Graph Connectedness using Scala 
+Detecting Graph Connectedness using Map Reduce in Java and on Scala aswell 
 
 • Developed a Map-Reduce algorithm to find the graph connectedness of any undirected graphs to be used with SDSC Comet
 supercomputer cluster.
@@ -28,6 +28,7 @@ class Vertex extends Writable {
 </p>
 
 
+
 <b>First Map-Reduce job:</b>
 
 map ( key, line ) =
@@ -35,6 +36,7 @@ map ( key, line ) =
   parse the line to get the vertex VID and the adjacent vector
   
   emit( VID, new Vertex(0,VID,VID,adjacent) )
+  
   
 <b>Second Map-Reduce job:</b>
 
@@ -61,7 +63,8 @@ reduce ( vid, values ) =
   }
   
   emit( m, new Vertex(0,m,vid,adj) )      // new group #
-  
+ 
+ 
 <b>Final Map-Reduce job:</b>
 
 map ( group, value ) =
