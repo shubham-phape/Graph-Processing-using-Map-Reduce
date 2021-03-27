@@ -8,8 +8,10 @@ supercomputer cluster.
 
 • Later implemented the algorithm in Spark and Scala to achieve 50% - 60% improvement in speed.
 
-#The Pseudo code for the implementation is using multiple Mappers is given below:
 
+
+<h2>The Pseudo code for the implementation is using multiple Mappers is given below:</h2>
+<p  style="color:red">
 class Vertex extends Writable {
 
   short tag;                 // 0 for a graph vertex, 1 for a group number
@@ -23,10 +25,10 @@ class Vertex extends Writable {
   ...
   
 }
+</p>
 
 
-
-First Map-Reduce job:
+<b>First Map-Reduce job:</b>
 
 map ( key, line ) =
 
@@ -34,7 +36,7 @@ map ( key, line ) =
   
   emit( VID, new Vertex(0,VID,VID,adjacent) )
   
-Second Map-Reduce job:
+<b>Second Map-Reduce job:</b>
 
 map ( key, vertex ) =
 
@@ -60,7 +62,7 @@ reduce ( vid, values ) =
   
   emit( m, new Vertex(0,m,vid,adj) )      // new group #
   
-Final Map-Reduce job:
+<b>Final Map-Reduce job:</b>
 
 map ( group, value ) =
 
